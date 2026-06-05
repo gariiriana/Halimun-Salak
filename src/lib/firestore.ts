@@ -6,6 +6,7 @@ import {
   addDoc,
   getDocs,
   setDoc,
+  writeBatch,
   serverTimestamp,
   query,
   orderBy,
@@ -32,6 +33,15 @@ export async function updateKavlingStatus(kavlingId: string, status: KavlingStat
 export async function seedKavling(kavling: Omit<Kavling, "id">) {
   const ref = doc(db, "kavlings", kavling.number);
   await setDoc(ref, kavling);
+}
+
+export async function seedKavlingsBatch(kavlings: Omit<Kavling, "id">[]) {
+  const batch = writeBatch(db);
+  kavlings.forEach((kavling) => {
+    const ref = doc(db, "kavlings", kavling.number);
+    batch.set(ref, kavling);
+  });
+  await batch.commit();
 }
 
 export async function checkKavlingsExist(): Promise<boolean> {
