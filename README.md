@@ -96,13 +96,13 @@ Kemudian, buka file `.env.local` dan isi dengan konfigurasi Firebase API Key And
 **Contoh isi variabel lingkungan:**
 
 ```env
-NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSy...
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=halimun-salak.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=halimun-salak
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=halimun-salak.firebasestorage.app
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=689351235702
-NEXT_PUBLIC_FIREBASE_APP_ID=1:689351235702:web:eaf75336f78692d8f5e757
-NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-160JYRJMHE
+NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyYourApiKeyHere...
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project-id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project-id.firebasestorage.app
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=1:your-sender-id:web:your-app-id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-your-measurement-id
 ```
 
 ### 3. Instal Dependensi
