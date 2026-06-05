@@ -1,7 +1,5 @@
-"use client";
-
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useKavlings } from "@/hooks/useKavlings";
 import { useLeads } from "@/hooks/useLeads";
@@ -10,11 +8,11 @@ import { updateKavlingStatus } from "@/lib/firestore";
 import type { Kavling, Lead, KavlingStatus } from "@/types";
 import { FiLogOut, FiUsers, FiMap, FiSearch, FiRefreshCw, FiPhone } from "react-icons/fi";
 
-export default function AdminDashboardPage() {
+export default function AdminDashboard() {
   const { user, loading: authLoading } = useAuth();
   const { kavlings, loading: kavlingsLoading } = useKavlings();
   const { leads, loading: leadsLoading } = useLeads();
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState<"kavlings" | "leads">("kavlings");
   
@@ -26,14 +24,14 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push("/admin/login");
+      navigate("/admin/login");
     }
-  }, [user, authLoading, router]);
+  }, [user, authLoading, navigate]);
 
   const handleLogout = async () => {
     try {
       await signOutAdmin();
-      router.push("/admin/login");
+      navigate("/admin/login");
     } catch (err) {
       console.error("Logout failed:", err);
     }
@@ -60,9 +58,9 @@ export default function AdminDashboardPage() {
 
   if (authLoading || !user) {
     return (
-      <div className="min-h-screen bg-forest-950 flex items-center justify-center text-cream-100/60">
+      <div className="min-h-screen bg-[#0B2314] flex items-center justify-center text-cream-100/60">
         <div className="flex items-center gap-3">
-          <svg className="animate-spin h-6 w-6 text-gold-500" viewBox="0 0 24 24">
+          <svg className="animate-spin h-6 w-6 text-[#C8A84E]" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
@@ -73,20 +71,20 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 text-forest-950 flex flex-col font-sans">
+    <div className="min-h-screen bg-zinc-50 text-[#0B2314] flex flex-col font-sans">
       
       {/* Top Navbar */}
-      <header className="bg-forest-950 text-white py-4 px-6 border-b border-gold-500/20 shadow-md">
+      <header className="bg-[#0B2314] text-white py-4 px-6 border-b border-[#C8A84E]/20 shadow-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-forest-800 border border-gold-500 flex items-center justify-center font-bold text-gold-500 text-xs">
+            <div className="w-9 h-9 rounded-full bg-[#1B4D2E] border border-[#C8A84E] flex items-center justify-center font-bold text-[#C8A84E] text-xs">
               HS
             </div>
             <div>
               <h1 className="font-[var(--font-heading)] font-bold text-base sm:text-lg">
                 The Halimun Salak
               </h1>
-              <p className="text-gold-400 text-[9px] tracking-wider uppercase font-semibold">
+              <p className="text-[#C8A84E] text-[9px] tracking-wider uppercase font-semibold">
                 Admin Panel Control
               </p>
             </div>
@@ -116,7 +114,7 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab("kavlings")}
             className={`flex items-center gap-2 pb-3.5 text-sm font-bold border-b-2 transition-all cursor-pointer ${
               activeTab === "kavlings"
-                ? "border-gold-500 text-gold-600"
+                ? "border-[#C8A84E] text-[#AA873C]"
                 : "border-transparent text-zinc-400 hover:text-zinc-600"
             }`}
           >
@@ -127,7 +125,7 @@ export default function AdminDashboardPage() {
             onClick={() => setActiveTab("leads")}
             className={`flex items-center gap-2 pb-3.5 text-sm font-bold border-b-2 transition-all cursor-pointer ${
               activeTab === "leads"
-                ? "border-gold-500 text-gold-600"
+                ? "border-[#C8A84E] text-[#AA873C]"
                 : "border-transparent text-zinc-400 hover:text-zinc-600"
             }`}
           >
@@ -152,7 +150,7 @@ export default function AdminDashboardPage() {
                   placeholder="Cari Nomor Kavling (misal: A3)..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-sm focus:outline-none focus:border-gold-500 focus:bg-white transition-all"
+                  className="w-full pl-9 pr-4 py-2.5 bg-zinc-50 border border-zinc-200 rounded-xl text-sm focus:outline-none focus:border-[#C8A84E] focus:bg-white transition-all"
                 />
               </div>
 
@@ -165,7 +163,7 @@ export default function AdminDashboardPage() {
                     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBlockFilter(e.target.value)}
                     title="Filter Blok"
                     aria-label="Filter Blok"
-                    className="bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-gold-500 w-full md:w-auto"
+                    className="bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-[#C8A84E] w-full md:w-auto"
                   >
                     <option value="all">Semua Blok</option>
                     {["A", "B", "C", "D", "E"].map((b) => (
@@ -181,7 +179,7 @@ export default function AdminDashboardPage() {
                     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setStatusFilter(e.target.value)}
                     title="Filter Status"
                     aria-label="Filter Status"
-                    className="bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-gold-500 w-full md:w-auto"
+                    className="bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-[#C8A84E] w-full md:w-auto"
                   >
                     <option value="all">Semua Status</option>
                     <option value="available">Tersedia</option>
@@ -197,7 +195,7 @@ export default function AdminDashboardPage() {
             <div className="bg-white border border-zinc-200/80 rounded-2xl shadow-sm overflow-hidden">
               {kavlingsLoading ? (
                 <div className="py-20 flex flex-col items-center justify-center gap-3 text-zinc-400">
-                  <FiRefreshCw className="animate-spin text-gold-500" size={24} />
+                  <FiRefreshCw className="animate-spin text-[#C8A84E]" size={24} />
                   <span>Memuat data kavling...</span>
                 </div>
               ) : filteredKavlings.length === 0 ? (
@@ -219,7 +217,7 @@ export default function AdminDashboardPage() {
                     <tbody className="divide-y divide-zinc-100 text-sm">
                       {filteredKavlings.map((k) => (
                         <tr key={k.number} className="hover:bg-zinc-50/55 transition-colors">
-                          <td className="py-4 px-6 font-bold text-forest-900">
+                          <td className="py-4 px-6 font-bold text-[#0B2314]">
                             Blok {k.block} — {k.number}
                           </td>
                           <td className="py-4 px-6">
@@ -253,14 +251,14 @@ export default function AdminDashboardPage() {
                                     : k.status === "booked"
                                     ? "bg-amber-50 text-amber-700 border-amber-200"
                                     : "bg-rose-50 text-rose-700 border-rose-200"
-                                }`}
+                                  }`}
                               >
                                 <option value="available">Tersedia</option>
                                 <option value="booked">Booking</option>
                                 <option value="sold">Terjual</option>
                               </select>
                               {updatingId === k.number && (
-                                <FiRefreshCw className="animate-spin text-gold-500" size={14} />
+                                <FiRefreshCw className="animate-spin text-[#C8A84E]" size={14} />
                               )}
                             </div>
                           </td>
@@ -280,7 +278,7 @@ export default function AdminDashboardPage() {
             <div className="bg-white border border-zinc-200/80 rounded-2xl shadow-sm overflow-hidden">
               {leadsLoading ? (
                 <div className="py-20 flex flex-col items-center justify-center gap-3 text-zinc-400">
-                  <FiRefreshCw className="animate-spin text-gold-500" size={24} />
+                  <FiRefreshCw className="animate-spin text-[#C8A84E]" size={24} />
                   <span>Memuat data leads...</span>
                 </div>
               ) : leads.length === 0 ? (
@@ -316,14 +314,14 @@ export default function AdminDashboardPage() {
 
                         return (
                           <tr key={l.id} className="hover:bg-zinc-50/55 transition-colors">
-                            <td className="py-4 px-6 font-bold text-forest-900">
+                            <td className="py-4 px-6 font-bold text-[#0B2314]">
                               {l.name}
                             </td>
                             <td className="py-4 px-6 font-mono text-zinc-600">
                               {l.phone}
                             </td>
                             <td className="py-4 px-6">
-                              <span className="inline-block bg-forest-800 text-gold-400 px-3 py-1 rounded-full text-xs font-bold">
+                              <span className="inline-block bg-[#1B4D2E] text-[#C8A84E] px-3 py-1 rounded-full text-xs font-bold">
                                 Kavling {l.kavlingId}
                               </span>
                             </td>

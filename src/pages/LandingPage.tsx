@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -14,7 +12,7 @@ import Footer from "@/components/Footer";
 import { checkKavlingsExist, seedKavling } from "@/lib/firestore";
 import { initialKavlings } from "@/data/initialKavlings";
 
-export default function Home() {
+export default function LandingPage() {
   const [seeding, setSeeding] = useState(false);
 
   useEffect(() => {
@@ -40,13 +38,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-cream-50 font-sans antialiased text-forest-950">
+    <div className="flex flex-col min-h-screen bg-[#FAF6F0] font-sans antialiased text-[#0B2314]">
       {/* Seeding Loader */}
       {seeding && (
-        <div className="fixed inset-0 bg-forest-950/80 backdrop-blur-sm z-[9999] flex items-center justify-center text-white">
-          <div className="bg-forest-900 border border-gold-500/30 rounded-3xl p-8 max-w-sm text-center shadow-2xl flex flex-col items-center gap-4">
+        <div className="fixed inset-0 bg-[#0B2314]/80 backdrop-blur-sm z-[9999] flex items-center justify-center text-white">
+          <div className="bg-[#12351F] border border-[#C8A84E]/30 rounded-3xl p-8 max-w-sm text-center shadow-2xl flex flex-col items-center gap-4">
             <svg
-              className="animate-spin h-10 w-10 text-gold-500"
+              className="animate-spin h-10 w-10 text-[#C8A84E]"
               viewBox="0 0 24 24"
             >
               <circle

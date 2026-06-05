@@ -24,38 +24,21 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Disable Next.js telemetry during build
-ENV NEXT_TELEMETRY_DISABLED=1
-
 RUN npm run build
 
-# Step 5: Production Runner
-FROM base AS runner
-WORKDIR /app
+# Step 5: Production Runner (Serves static assets using Nginx)
+FROM nginx:alpine AS runner
+WORKDIR /usr/share/nginx/html
 
-ENV NODE_ENV=production
-# Disable Next.js telemetry at runtime
-ENV NEXT_TELEMETRY_DISABLED=1
+# Clean default assets
+RUN rm -rf ./*
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+# Copy built static assets from builder stage
+COPY --from=builder /app/dist .
 
-# Copy static assets and public assets
-COPY --from=builder /app/public ./public
-
-# Set permissions for the Next.js prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Copy standalone build output which contains a minimal node_modules and server.js
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
+# Copy custom Nginx configuration for SPA routing
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
 
-CMD ["node", "server.js"]
+CMD ["nginx", "-g", "daemon off;"]

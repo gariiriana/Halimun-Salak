@@ -15,7 +15,6 @@ services:
       - .:/app
       # Avoid mounting host's local node_modules inside container
       - /app/node_modules
-      - /app/.next
     environment:
       - NODE_ENV=development
       # Enable watchpack polling to ensure hot reload works reliably on Windows/Mac hosts
