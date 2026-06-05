@@ -21,6 +21,7 @@ const pricelist = [
     priceOld: "Rp 2,5 Jt",
     cashPromo: "Rp 215.000.000",
     normal: "Rp 250.000.000",
+    
     cicilan3: { total: "Rp 250.000.000", bf: "5.000.000", dp: "100.000.000", monthly: "48.300.000" },
     cicilan6: { total: "Rp 260.000.000", bf: "5.000.000", dp: "102.000.000", monthly: "25.500.000" },
     color: "from-yellow-500 to-amber-600",
