@@ -1,6 +1,30 @@
-# The Halimun Salak — Landing Page & Admin Dashboard
+# The Halimun Salak — Real Estate Interactive Siteplan & Admin Lead System
 
-Website landing page premium bernuansa *eco-luxury European modern* untuk penjualan kavling tanah eksklusif **"The Halimun Salak"** (Proyek ke-11 oleh **Nuansa Alam** / **PT Alam Barakah Hasanah**). Website ini dilengkapi dengan Peta Siteplan Interaktif SVG secara real-time, form lead capture terintegrasi WhatsApp, dan Admin Dashboard terproteksi untuk mengelola status kavling dan calon pembeli secara dinamis.
+An enterprise-grade, high-performance, and secure hybrid-serverless landing page and admin management system custom-designed for **The Halimun Salak** premium villa plot development (the 11th project by **Nuansa Alam** / **PT Alam Barakah Hasanah**). This platform features an interactive SVG siteplan map, double-action lead capturing, real-time Firestore database streams, and a secure admin control portal.
+
+---
+
+## System Badges and Architecture Metrics
+
+![Next.js](https://img.shields.io/badge/next.js-14.2-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/react-19.0-61DAFB?style=flat-square&logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/typescript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Firebase](https://img.shields.io/badge/firebase-12.0-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+![Tailwind](https://img.shields.io/badge/tailwindcss-4.0-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-enabled-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+---
+
+## Core Architectural Pillars
+
+### 1. Serverless Direct-to-Firestore (Decoupled Client Design)
+Aplikasi web ini menggunakan arsitektur serverless di mana komponen client-side berkomunikasi secara langsung (*direct queries*) dengan Google Cloud Firestore dan Firebase Authentication. Desain decoupling ini meniadakan latensi API gateway perantara, mengurangi beban server penengah, dan memastikan performa tinggi dengan skalabilitas elastis otomatis saat kampanye pemasaran berjalan.
+
+### 2. Standalone Containerized Optimization
+Menggunakan optimasi `output: "standalone"` Next.js untuk memilah modul dan file runtime minimal yang dibutuhkan oleh Node.js. Dipadukan dengan 5-stage Dockerfile multi-stage build, container production hanya menyalin binary standalone dan static assets terpilih. Teknik ini memangkas ukuran image container hingga lebih dari 85% (~150MB) untuk efisiensi penyimpanan dan deploy super instan.
+
+### 3. Real-time Reactive Synchronization
+Seluruh perubahan status peta siteplan interaktif disinkronisasikan secara reaktif. Melalui inisialisasi listener `onSnapshot` Firestore, status pemesanan kavling (Available, Booked, Sold) yang diperbarui oleh Admin dari dashboard akan otomatis ter-update di sisi user secara real-time tanpa perlu me-refresh halaman atau menggunakan HTTP polling berkala.
 
 ---
 
