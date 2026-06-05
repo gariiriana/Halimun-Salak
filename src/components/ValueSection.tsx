@@ -50,38 +50,38 @@ const values = [
 
 export default function ValueSection() {
   return (
-    <section id="tentang" className="py-24 bg-cream-50">
+    <section id="tentang" className="py-12 md:py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
             Why Choose Us
           </span>
           <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 mt-3">
             Keunggulan The Halimun Salak
           </h2>
-          <p className="text-forest-700/70 mt-4 max-w-2xl mx-auto text-lg">
+          <p className="text-forest-700/70 mt-4 max-w-2xl mx-auto text-sm sm:text-base md:text-lg">
             Kawasan villa/hunian ala Eropa dengan view langsung ke Gunung Salak
             dan Gunung Pangrango, ketinggian 560 MDPL.
           </p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {values.map((v) => (
             <div
               key={v.title}
-              className="group bg-white rounded-2xl p-8 border border-forest-800/5 hover:border-gold-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-forest-900/5 hover:-translate-y-1"
+              className="group bg-white rounded-2xl p-5 md:p-8 border border-forest-800/5 hover:border-gold-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-forest-900/5 hover:-translate-y-1"
             >
               <div
-                className={`w-14 h-14 rounded-xl bg-forest-950 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform ${v.color}`}
+                className={`w-10 h-10 md:w-14 md:h-14 rounded-xl bg-forest-950 flex items-center justify-center mb-3 md:mb-5 group-hover:scale-110 transition-transform ${v.color}`}
               >
-                {v.icon}
+                <div className="[&>svg]:w-5 [&>svg]:h-5 md:[&>svg]:w-7 md:[&>svg]:h-7">{v.icon}</div>
               </div>
-              <h3 className="font-[var(--font-heading)] text-xl font-bold text-forest-900 mb-3">
+              <h3 className="font-[var(--font-heading)] text-base md:text-xl font-bold text-forest-900 mb-2 md:mb-3">
                 {v.title}
               </h3>
-              <p className="text-forest-700/70 leading-relaxed text-sm">
+              <p className="text-forest-700/70 leading-relaxed text-xs md:text-sm">
                 {v.desc}
               </p>
             </div>

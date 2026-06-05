@@ -38,17 +38,17 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-cream-50">
+    <section id="faq" className="py-12 md:py-24 bg-cream-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
             Frequently Asked Questions
           </span>
           <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl font-bold text-forest-900 mt-3">
             Pertanyaan yang Sering Diajukan
           </h2>
-          <p className="text-forest-700/70 mt-4 max-w-lg mx-auto text-sm sm:text-base">
+          <p className="text-forest-700/70 mt-4 max-w-lg mx-auto text-xs sm:text-base">
             Temukan semua informasi detail tentang aspek legalitas, lokasi, dan mekanisme pembelian kavling The Halimun Salak.
           </p>
         </div>
@@ -64,11 +64,11 @@ export default function FAQSection() {
               >
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-semibold text-forest-900 text-base sm:text-lg hover:text-gold-600 transition-colors"
+                  className="w-full text-left px-4 py-4 md:px-6 md:py-5 flex items-center justify-between gap-4 font-semibold text-forest-900 text-sm md:text-lg hover:text-gold-600 transition-colors"
                 >
                   <span>{faq.q}</span>
                   <span className="text-gold-500 shrink-0">
-                    {isOpen ? <FiMinus size={20} /> : <FiPlus size={20} />}
+                    {isOpen ? <FiMinus size={18} /> : <FiPlus size={18} />}
                   </span>
                 </button>
 
@@ -77,7 +77,7 @@ export default function FAQSection() {
                     isOpen ? "max-h-96 border-t border-forest-800/5" : "max-h-0"
                   } overflow-hidden`}
                 >
-                  <p className="px-6 py-5 text-forest-700/80 text-sm sm:text-base leading-relaxed bg-cream-50/30">
+                  <p className="px-4 py-4 md:px-6 md:py-5 text-forest-700/80 text-xs md:text-base leading-relaxed bg-cream-50/30">
                     {faq.a}
                   </p>
                 </div>

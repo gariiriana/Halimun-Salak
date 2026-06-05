@@ -74,10 +74,10 @@ export default function GallerySection() {
     activeTab === "all" ? items : items.filter((item) => item.category === activeTab);
 
   return (
-    <section id="galeri" className="py-24 section-dark">
+    <section id="galeri" className="py-12 md:py-24 section-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
             Gallery & Portofolio
           </span>
@@ -90,12 +90,12 @@ export default function GallerySection() {
         </div>
 
         {/* Tab Filters */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-6 md:mb-12">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all ${
+              className={`px-4 py-2 md:px-6 md:py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all ${
                 activeTab === cat.id
                   ? "bg-gold-500 text-forest-950 shadow-lg shadow-gold-500/20"
                   : "bg-white/5 text-cream-100/70 hover:bg-white/10 hover:text-white"
@@ -107,7 +107,7 @@ export default function GallerySection() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-scale-in">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 animate-scale-in">
           {filteredItems.map((item, idx) => (
             <div
               key={idx}
@@ -118,25 +118,25 @@ export default function GallerySection() {
                   src={item.src}
                   alt={item.title}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 md:p-6" />
               </div>
               
-              <div className="p-6 relative z-10">
-                <span className="text-gold-400 text-xs tracking-wider uppercase font-semibold">
+              <div className="p-3 md:p-6 relative z-10">
+                <span className="text-gold-400 text-[9px] md:text-xs tracking-wider uppercase font-semibold">
                   {item.category === "villa"
                     ? "Villa Design"
                     : item.category === "fasilitas"
                     ? "Amenities"
                     : "Developer's Portfolio"}
                 </span>
-                <h3 className="font-[var(--font-heading)] text-lg font-bold text-white mt-1 mb-2">
+                <h3 className="font-[var(--font-heading)] text-sm md:text-lg font-bold text-white mt-1 mb-1 md:mb-2">
                   {item.title}
                 </h3>
-                <p className="text-cream-100/60 text-xs sm:text-sm line-clamp-2">
+                <p className="text-cream-100/60 text-[10px] md:text-sm line-clamp-2">
                   {item.desc}
                 </p>
               </div>

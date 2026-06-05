@@ -51,28 +51,33 @@ const inclusions = [
 
 export default function PricelistSection() {
   return (
-    <section id="pricelist" className="py-24 bg-cream-50">
+    <section id="pricelist" className="py-12 md:py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
             Pricelist
           </span>
           <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 mt-3">
             Harga Kavling
           </h2>
-          <p className="text-forest-700/70 mt-4 max-w-xl mx-auto">
+          <p className="text-forest-700/70 mt-4 max-w-xl mx-auto text-sm sm:text-base">
             Harga promo cash spesial. Booking fee hanya Rp 5.000.000 (berlaku 7
             hari).
           </p>
         </div>
 
+        {/* Mobile Swipe Notice */}
+        <div className="block md:hidden text-center text-xs text-forest-700/55 mb-4 animate-pulse">
+          ← Geser ke kanan/kiri untuk melihat tipe lain →
+        </div>
+
         {/* Price Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16 pb-4 md:pb-0 snap-x snap-mandatory scroll-smooth">
           {pricelist.map((p) => (
             <div
               key={p.type}
-              className={`relative bg-white rounded-3xl overflow-hidden border-2 ${p.border} hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+              className={`relative bg-white rounded-3xl overflow-hidden border-2 ${p.border} hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 min-w-[285px] sm:min-w-[320px] md:min-w-0 snap-align-start flex-1 ${
                 p.popular ? "ring-2 ring-gold-500 ring-offset-4" : ""
               }`}
             >

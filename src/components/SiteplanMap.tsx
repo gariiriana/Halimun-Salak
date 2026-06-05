@@ -165,6 +165,11 @@ export default function SiteplanMap() {
           ))}
         </div>
 
+        {/* Mobile Swipe Indicator */}
+        <div className="block lg:hidden text-center text-xs text-cream-100/45 mb-3 animate-pulse">
+          ← Geser peta ke kanan/kiri untuk melihat detail →
+        </div>
+
         {/* SVG Map */}
         <div className="bg-forest-900/50 border border-white/10 rounded-2xl p-4 sm:p-6 overflow-x-auto">
           {loading ? (

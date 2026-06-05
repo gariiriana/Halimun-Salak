@@ -4,24 +4,24 @@ import { FiMapPin, FiNavigation, FiClock } from "react-icons/fi";
 
 export default function LocationSection() {
   return (
-    <section id="lokasi" className="py-24 bg-cream-50">
+    <section id="lokasi" className="py-12 md:py-24 bg-cream-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Grid layout */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-12 items-center">
           
           {/* Info Card */}
           <div className="lg:col-span-5">
             <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
               Location & Access
             </span>
-            <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl font-bold text-forest-900 mt-3 mb-6">
+            <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl font-bold text-forest-900 mt-3 mb-4 md:mb-6">
               Lokasi Strategis & Akses Mudah
             </h2>
-            <p className="text-forest-700/70 mb-8 text-sm sm:text-base leading-relaxed">
+            <p className="text-forest-700/70 mb-4 md:mb-8 text-sm sm:text-base leading-relaxed">
               Terletak di kawasan asri Ciburayut, Cigombong, Bogor Selatan. Menawarkan aksesibilitas prima yang menghubungkan ketenangan alam pegunungan dengan kemudahan jangkauan transportasi kota.
             </p>
 
-            <div className="space-y-6 mb-8">
+            <div className="space-y-4 md:space-y-6 mb-6 md:mb-8">
               <div className="flex gap-4">
                 <div className="w-12 h-12 rounded-xl bg-forest-950 text-gold-500 flex items-center justify-center shrink-0 border border-gold-500/20">
                   <FiMapPin size={22} />

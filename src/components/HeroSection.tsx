@@ -24,7 +24,7 @@ export default function HeroSection() {
       {/* Gold Line Accent */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-gold-500/50 to-transparent" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-32">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center py-20 md:py-32">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-white/5 border border-gold-500/20 rounded-full px-5 py-2 mb-8 animate-fade-in">
           <FiSun className="text-gold-400" size={14} />
@@ -75,7 +75,7 @@ export default function HeroSection() {
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-white/5 border border-white/10 rounded-2xl p-4 hover:border-gold-500/30 transition-colors"
+              className="bg-white/5 border border-white/10 rounded-2xl p-3 md:p-4 hover:border-gold-500/30 transition-colors"
             >
               <div className="text-gold-400 mb-2 flex justify-center">{stat.icon}</div>
               <p className="text-white font-bold text-2xl font-[var(--font-heading)]">
@@ -89,7 +89,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-cream-100/30 rounded-full flex items-start justify-center p-1.5">
           <div className="w-1.5 h-3 bg-gold-400 rounded-full" />
         </div>
