@@ -20,12 +20,15 @@ An enterprise-grade, high-performance, and secure client-side Single Page Applic
 ## Core Architectural Pillars
 
 ### 1. Serverless Direct-to-Firestore (Decoupled Client Design)
+
 Aplikasi web ini menggunakan arsitektur serverless di mana komponen client-side berkomunikasi secara langsung (*direct queries*) dengan Google Cloud Firestore dan Firebase Authentication melalui Firebase Web SDK. Desain decoupling ini meniadakan latensi API gateway perantara, mengurangi beban server penengah, dan memastikan performa tinggi dengan skalabilitas elastis otomatis saat kampanye pemasaran berjalan.
 
 ### 2. Static Nginx Serving (Ultra-low Footprint)
+
 Pada tahap produksi, kode sumber aplikasi dikompilasi menjadi berkas statik teroptimasi di bawah direktori `/dist` dan disajikan via kontainer **Nginx Alpine**. Dengan mengeliminasi runtime Node.js di sisi server produksi, ukuran image kontainer menyusut drastis menjadi hanya sekitar **~25MB** dengan overhead memori yang sangat kecil dan kecepatan pengiriman aset yang maksimal.
 
 ### 3. Real-time Reactive Synchronization
+
 Seluruh perubahan status peta siteplan interaktif disinkronisasikan secara reaktif. Melalui inisialisasi listener `onSnapshot` Firestore, status pemesanan kavling (Available, Booked, Sold) yang diperbarui oleh Admin dari dashboard akan otomatis ter-update di sisi user secara real-time tanpa perlu me-refresh halaman atau menggunakan HTTP polling berkala.
 
 ---
@@ -54,6 +57,7 @@ Seluruh perubahan status peta siteplan interaktif disinkronisasikan secara reakt
 ## 📦 Persyaratan Sistem
 
 Sebelum memulai, pastikan perangkat Anda telah menginstal:
+
 - [Node.js](https://nodejs.org/) (versi 18.x atau 20.x ke atas)
 - [NPM](https://www.npmjs.com/) atau Yarn / PNPM
 - [Docker](https://www.docker.com/) & Docker Compose (Opsional, untuk containerization)
@@ -65,27 +69,32 @@ Sebelum memulai, pastikan perangkat Anda telah menginstal:
 Ikuti langkah-langkah berikut untuk menjalankan project di komputer lokal Anda:
 
 ### 1. Clone Repositori
+
 ```bash
 git clone https://github.com/gariiriana/Halimun-Salak.git
 cd Halimun-Salak
 ```
 
 ### 2. Konfigurasi Environment Variables
+
 Salin file `.env.example` menjadi berkas lingkungan lokal Anda:
+
 ```bash
 cp .env.example .env.local
 ```
 
 Kemudian, buka file `.env.local` dan isi dengan konfigurasi Firebase API Key Anda. Anda juga dapat membuat file environment khusus berdasarkan kebutuhan deployment:
-* `.env` - Environment default
-* `.env.local` - Override lokal untuk semua environment (diabaikan oleh Git)
-* `.env.development` - Kredensial khusus development
-* `.env.development.local` - Override lokal khusus development (diabaikan oleh Git)
-* `.env.production` - Kredensial khusus produksi
-* `.env.production.local` - Override lokal khusus produksi (diabaikan oleh Git)
-* `.env.test.local` - Kredensial pengujian lokal (diabaikan oleh Git)
+
+- `.env` - Environment default
+- `.env.local` - Override lokal untuk semua environment (diabaikan oleh Git)
+- `.env.development` - Kredensial khusus development
+- `.env.development.local` - Override lokal khusus development (diabaikan oleh Git)
+- `.env.production` - Kredensial khusus produksi
+- `.env.production.local` - Override lokal khusus produksi (diabaikan oleh Git)
+- `.env.test.local` - Kredensial pengujian lokal (diabaikan oleh Git)
 
 **Contoh isi variabel lingkungan:**
+
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSy...
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=halimun-salak.firebaseapp.com
@@ -97,14 +106,17 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-160JYRJMHE
 ```
 
 ### 3. Instal Dependensi
+
 ```bash
 npm install
 ```
 
 ### 4. Jalankan Server Development
+
 ```bash
 npm run dev
 ```
+
 Buka [http://localhost:3000](http://localhost:3000) di browser Anda untuk melihat hasilnya.
 
 ---
@@ -114,17 +126,23 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda untuk meliha
 Kami telah menyediakan konfigurasi Docker Compose teroptimasi untuk kemudahan pengembangan maupun pengujian production.
 
 ### Menjalankan Mode Development (Hot-Reload)
+
 Container akan memetakan kode lokal Anda ke dalam container, sehingga perubahan kode host langsung ter-update secara otomatis:
+
 ```bash
 docker compose up app-dev --build
 ```
+
 Aplikasi dapat diakses melalui browser pada alamat [http://localhost:3000](http://localhost:3000).
 
 ### Menjalankan Mode Production (Nginx Static Serving)
+
 Container akan melakukan kompilasi statik dan menyajikannya via Nginx Alpine pada port `3000`:
+
 ```bash
 docker compose up app-prod --build
 ```
+
 Aplikasi dapat diakses melalui browser pada alamat [http://localhost:3000](http://localhost:3000).
 
 ---
