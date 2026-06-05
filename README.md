@@ -18,12 +18,15 @@ An enterprise-grade, high-performance, and secure hybrid-serverless landing page
 ## Core Architectural Pillars
 
 ### 1. Serverless Direct-to-Firestore (Decoupled Client Design)
+
 Aplikasi web ini menggunakan arsitektur serverless di mana komponen client-side berkomunikasi secara langsung (*direct queries*) dengan Google Cloud Firestore dan Firebase Authentication. Desain decoupling ini meniadakan latensi API gateway perantara, mengurangi beban server penengah, dan memastikan performa tinggi dengan skalabilitas elastis otomatis saat kampanye pemasaran berjalan.
 
 ### 2. Standalone Containerized Optimization
+
 Menggunakan optimasi `output: "standalone"` Next.js untuk memilah modul dan file runtime minimal yang dibutuhkan oleh Node.js. Dipadukan dengan 5-stage Dockerfile multi-stage build, container production hanya menyalin binary standalone dan static assets terpilih. Teknik ini memangkas ukuran image container hingga lebih dari 85% (~150MB) untuk efisiensi penyimpanan dan deploy super instan.
 
 ### 3. Real-time Reactive Synchronization
+
 Seluruh perubahan status peta siteplan interaktif disinkronisasikan secara reaktif. Melalui inisialisasi listener `onSnapshot` Firestore, status pemesanan kavling (Available, Booked, Sold) yang diperbarui oleh Admin dari dashboard akan otomatis ter-update di sisi user secara real-time tanpa perlu me-refresh halaman atau menggunakan HTTP polling berkala.
 
 ---
