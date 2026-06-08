@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-forest-950 text-cream-100/70 border-t border-gold-500/20 pt-20 pb-8">
+    <footer className="bg-black text-zinc-400 border-t border-zinc-900 pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Top Grid */}
@@ -16,19 +16,13 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-forest-800 flex items-center justify-center border-2 border-gold-500">
-                <span className="text-gold-500 font-bold text-sm">HS</span>
-              </div>
-              <div>
-                <p className="text-white font-bold text-lg font-[var(--font-heading)] leading-tight">
-                  The Halimun Salak
-                </p>
-                <p className="text-gold-400 text-[10px] tracking-[0.2em] uppercase">
-                  Developed by Nuansa Alam
-                </p>
-              </div>
+              <img
+                src="/logo-halimun-salak-v4.png"
+                alt="The Halimun Salak"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
             </div>
-            <p className="text-sm leading-relaxed mb-6">
+            <p className="text-xs sm:text-sm leading-relaxed mb-6 text-zinc-400">
               The Halimun Salak adalah kawasan kavling villa eksklusif bernuansa eco-luxury European modern living yang dikembangkan oleh PT Alam Barakah Hasanah (Nuansa Alam). Berkomitmen menghadirkan investasi tanah terbaik dengan kenyamanan hunian terpadu.
             </p>
             
@@ -38,29 +32,29 @@ export default function Footer() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 hover:bg-gold-500 hover:text-forest-950 flex items-center justify-center text-white transition-all"
+                className="w-9 h-9 rounded-sm bg-white/5 border border-zinc-800/80 hover:bg-[#0057B8] hover:border-[#0057B8] hover:text-white flex items-center justify-center text-zinc-300 transition-all"
                 aria-label="Instagram"
               >
-                <FaInstagram size={18} />
+                <FaInstagram size={16} />
               </a>
               <a
                 href={`https://wa.me/${ADMIN_WA}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/5 hover:bg-green-600 hover:text-white flex items-center justify-center text-white transition-all"
+                className="w-9 h-9 rounded-sm bg-white/5 border border-zinc-800/80 hover:bg-[#0057B8] hover:border-[#0057B8] hover:text-white flex items-center justify-center text-zinc-300 transition-all"
                 aria-label="WhatsApp"
               >
-                <FaWhatsapp size={18} />
+                <FaWhatsapp size={16} />
               </a>
             </div>
           </div>
 
           {/* Quick Links Col */}
           <div className="md:col-span-3 md:pl-8">
-            <h3 className="text-white font-bold text-base font-[var(--font-heading)] mb-6">
+            <h3 className="text-white font-bold text-xs uppercase tracking-widest mb-6">
               Navigasi
             </h3>
-            <ul className="space-y-3.5 text-sm">
+            <ul className="space-y-3.5 text-xs">
               {[
                 { label: "Beranda", href: "#beranda" },
                 { label: "Tentang Kami", href: "#tentang" },
@@ -73,9 +67,9 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="hover:text-gold-400 transition-colors flex items-center gap-1"
+                    className="hover:text-white uppercase tracking-wider text-[10px] font-semibold text-zinc-400 transition-colors flex items-center gap-1.5"
                   >
-                    <span className="text-gold-500/50">&rsaquo;</span> {link.label}
+                    <span className="text-[#0082FB]">&rsaquo;</span> {link.label}
                   </a>
                 </li>
               ))}
@@ -84,32 +78,32 @@ export default function Footer() {
 
           {/* Contact Col */}
           <div className="md:col-span-4">
-            <h3 className="text-white font-bold text-base font-[var(--font-heading)] mb-6">
+            <h3 className="text-white font-bold text-xs uppercase tracking-widest mb-6">
               Kontak & Kantor Pemasaran
             </h3>
-            <ul className="space-y-4 text-sm">
+            <ul className="space-y-4 text-xs sm:text-sm">
               <li className="flex gap-3 items-start">
-                <FaMapMarkerAlt className="text-gold-500 mt-1 shrink-0" size={16} />
-                <span>
+                <FaMapMarkerAlt className="text-[#0082FB] mt-0.5 shrink-0" size={15} />
+                <span className="text-zinc-400 text-xs leading-relaxed">
                   Desa Ciburayut, Kec. Cigombong, Kabupaten Bogor, Jawa Barat 16110
                 </span>
               </li>
               <li className="flex gap-3 items-center">
-                <FaWhatsapp className="text-gold-500 shrink-0" size={16} />
+                <FaWhatsapp className="text-[#0082FB] shrink-0" size={15} />
                 <a
                   href={`https://wa.me/${ADMIN_WA}`}
-                  className="hover:text-gold-400 transition-colors"
+                  className="hover:text-white text-zinc-400 transition-colors text-xs"
                 >
                   +62 895-0807-4080 (Sales Consultant)
                 </a>
               </li>
               <li className="flex gap-3 items-center">
-                <FaEnvelope className="text-gold-500 shrink-0" size={16} />
+                <FaEnvelope className="text-[#0082FB] shrink-0" size={15} />
                 <a
-                  href="mailto:info@halimunsalak.id"
-                  className="hover:text-gold-400 transition-colors"
+                  href="mailto:info@kavling-halimunsalak.com"
+                  className="hover:text-white text-zinc-400 transition-colors text-xs"
                 >
-                  info@halimunsalak.id
+                  info@kavling-halimunsalak.com
                 </a>
               </li>
             </ul>
@@ -118,11 +112,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-wider font-semibold text-zinc-600">
           <p>
             &copy; {currentYear} PT Alam Barakah Hasanah. All rights reserved.
           </p>
-          <p className="text-cream-100/40">
+          <p>
             Designed & Developed under Nuansa Alam Proyek Ke-11
           </p>
         </div>

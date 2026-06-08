@@ -5,13 +5,14 @@ import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { ADMIN_WA, INSTAGRAM_URL } from "@/data/initialKavlings";
 
 const navLinks = [
-  { label: "Beranda", href: "#beranda" },
-  { label: "Tentang", href: "#tentang" },
+  { label: "Legalitas", href: "#legalitas" },
+  { label: "Konsep", href: "#konsep" },
+  { label: "Fasilitas", href: "#fasilitas" },
+  { label: "Desain", href: "#desain" },
   { label: "Siteplan", href: "#siteplan" },
   { label: "Pricelist", href: "#pricelist" },
-  { label: "Alur Pembelian", href: "#alur" },
   { label: "FAQ", href: "#faq" },
-  { label: "Lokasi", href: "#lokasi" },
+  { label: "Promo", href: "#promo" },
 ];
 
 export default function Navbar() {
@@ -28,24 +29,18 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-forest-950/95 backdrop-blur-md shadow-lg py-2"
-          : "bg-transparent py-4"
+          ? "bg-[#050505]/95 backdrop-blur-md border-b border-zinc-900 shadow-lg py-3"
+          : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <a href="#beranda" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-full bg-forest-800 flex items-center justify-center border-2 border-gold-500 group-hover:scale-110 transition-transform">
-            <span className="text-gold-500 font-bold text-sm font-[var(--font-heading)]">HS</span>
-          </div>
-          <div className="hidden sm:block">
-            <p className="text-white font-bold text-lg font-[var(--font-heading)] leading-tight">
-              The Halimun Salak
-            </p>
-            <p className="text-gold-400 text-[10px] tracking-[0.2em] uppercase">
-              Developed by Nuansa Alam
-            </p>
-          </div>
+          <img
+            src="/logo-halimun-salak-v4.png"
+            alt="The Halimun Salak"
+            className="h-12 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
         </a>
 
         {/* Desktop Links */}
@@ -54,7 +49,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="px-3 py-2 text-sm text-cream-100/80 hover:text-gold-400 transition-colors rounded-lg hover:bg-white/5"
+              className="px-4 py-2 text-xs uppercase tracking-widest text-zinc-300 hover:text-white transition-all hover:bg-white/5 rounded-sm font-medium"
             >
               {l.label}
             </a>
@@ -62,60 +57,82 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-4">
           <a
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-cream-100/60 hover:text-gold-400 transition-colors"
+            className="text-zinc-400 hover:text-white transition-colors"
             aria-label="Instagram"
           >
-            <FaInstagram size={20} />
+            <FaInstagram size={18} />
           </a>
           <a
-            href={`https://wa.me/${ADMIN_WA}?text=Halo%20Admin,%20saya%20tertarik%20dengan%20Kavling%20The%20Halimun%20Salak`}
+            href={`https://wa.me/${ADMIN_WA}?text=Hallo%20saya%20ingin%20konsultasi%20dan%20info%20detail%20The%20Halimun%20Salak`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-green-500/25"
+            className="flex items-center gap-2 border border-white/30 hover:border-white text-white px-5 py-2 rounded-none text-[11px] font-bold uppercase tracking-widest transition-all bg-transparent hover:bg-white hover:text-black cursor-pointer"
           >
-            <FaWhatsapp size={18} />
-            Hubungi Kami
+            <FaWhatsapp size={13} />
+            Konsultasi Online
           </a>
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-white p-2"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </button>
+        {/* Mobile Actions Container */}
+        <div className="flex lg:hidden items-center gap-3">
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-300 hover:text-white transition-colors p-1"
+            aria-label="Instagram"
+          >
+            <FaInstagram size={18} />
+          </a>
+          <a
+            href={`https://wa.me/${ADMIN_WA}?text=Hallo%20saya%20ingin%20konsultasi%20dan%20info%20detail%20The%20Halimun%20Salak`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 border border-white/20 hover:border-white text-white px-2.5 py-1.5 rounded-none text-[9px] font-bold uppercase tracking-wider transition-all bg-transparent hover:bg-white hover:text-black cursor-pointer"
+            aria-label="Konsultasi WA"
+          >
+            <FaWhatsapp size={12} className="text-[#25D366]" />
+            <span>KONSULTASI</span>
+          </a>
+          
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="text-white p-1.5"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-forest-950/98 backdrop-blur-lg border-t border-white/10 animate-fade-in">
+        <div className="lg:hidden bg-[#050505]/98 backdrop-blur-lg border-t border-zinc-900 animate-fade-in">
           <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {navLinks.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-4 py-3 text-cream-100/80 hover:text-gold-400 hover:bg-white/5 rounded-lg transition-colors"
+                className="px-4 py-3 text-zinc-300 hover:text-white text-xs uppercase tracking-wider hover:bg-white/5 rounded-sm transition-colors"
               >
                 {l.label}
               </a>
             ))}
             <div className="flex items-center gap-3 mt-4 px-4">
               <a
-                href={`https://wa.me/${ADMIN_WA}`}
+                href={`https://wa.me/${ADMIN_WA}?text=Hallo%20saya%20ingin%20konsultasi%20dan%20info%20detail%20The%20Halimun%20Salak`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-3 rounded-xl font-semibold"
+                className="flex-1 flex items-center justify-center gap-2 border border-white/30 hover:border-white text-white px-4 py-3 rounded-none text-[11px] font-bold uppercase tracking-widest transition-all bg-transparent hover:bg-white hover:text-black cursor-pointer"
               >
-                <FaWhatsapp size={18} />
-                WhatsApp
+                <FaWhatsapp size={15} />
+                Konsultasi Online
               </a>
               <a
                 href={INSTAGRAM_URL}
@@ -123,9 +140,9 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 title="Instagram"
                 aria-label="Instagram"
-                className="w-12 h-12 flex items-center justify-center bg-white/10 rounded-xl text-cream-100"
+                className="w-12 h-12 flex items-center justify-center bg-white/5 rounded-none text-zinc-300 border border-zinc-800 hover:border-white transition-all hover:bg-white hover:text-black"
               >
-                <FaInstagram size={20} />
+                <FaInstagram size={18} />
               </a>
             </div>
           </div>

@@ -49,30 +49,29 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0B2314] via-[#12351F] to-[#1B4D2E] flex items-center justify-center p-4">
-      {/* Decorative Blur Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#C8A84E]/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#1B4D2E]/10 rounded-full blur-3xl" />
+    <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Decorative Blur Orbs (BYD Theme) */}
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#0057B8]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#33A2FF]/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative w-full max-w-md bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-md">
+      <div className="relative w-full max-w-md bg-[#121212] border border-zinc-800 rounded-sm p-8 sm:p-10 shadow-2xl backdrop-blur-md">
         
         {/* Brand/Logo Area */}
         <div className="text-center mb-8">
-          <div className="w-16 h-16 rounded-full bg-[#1B4D2E] border-2 border-[#C8A84E] flex items-center justify-center mx-auto mb-4">
-            <span className="text-[#C8A84E] font-bold text-xl">HS</span>
-          </div>
-          <h1 className="font-[var(--font-heading)] text-2xl font-bold text-white">
+          <img
+            src="/logo-halimun-salak-v4.png"
+            alt="The Halimun Salak"
+            className="h-24 w-auto object-contain mx-auto mb-4"
+          />
+          <h1 className="font-[var(--font-heading)] text-xl font-extrabold text-white uppercase italic tracking-wider">
             Admin Portal
           </h1>
-          <p className="text-cream-100/60 text-xs tracking-wider uppercase mt-1">
-            The Halimun Salak
-          </p>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-950/40 border border-red-500/30 text-red-200 rounded-xl flex items-start gap-3 text-sm">
-            <FiAlertCircle className="shrink-0 mt-0.5" size={18} />
+          <div className="mb-6 p-4 bg-red-950/30 border border-red-500/20 text-red-200 rounded-sm flex items-start gap-3 text-xs uppercase tracking-wider font-semibold">
+            <FiAlertCircle className="shrink-0 mt-0.5" size={16} />
             <span>{error}</span>
           </div>
         )}
@@ -80,31 +79,31 @@ export default function AdminLogin() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-cream-100/80 text-xs font-semibold uppercase tracking-wider mb-2">
+            <label className="block text-zinc-400 text-[10px] tracking-wider uppercase font-bold mb-2">
               Email Address
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-cream-100/40 pointer-events-none">
-                <FiMail size={18} />
+              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-zinc-500 pointer-events-none">
+                <FiMail size={16} />
               </span>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                placeholder="admin@halimunsalak.id"
-                className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C8A84E] focus:ring-1 focus:ring-[#C8A84E] text-white rounded-xl text-sm transition-all outline-none"
+                placeholder="admin@kavling-halimunsalak.com"
+                className="w-full pl-11 pr-4 py-3.5 bg-[#050505] border border-zinc-800 hover:border-zinc-700 focus:border-[#0082FB] focus:ring-1 focus:ring-[#0082FB] text-white rounded-sm text-xs transition-all outline-none"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-cream-100/80 text-xs font-semibold uppercase tracking-wider mb-2">
+            <label className="block text-zinc-400 text-[10px] tracking-wider uppercase font-bold mb-2">
               Password
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-cream-100/40 pointer-events-none">
-                <FiLock size={18} />
+              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-zinc-500 pointer-events-none">
+                <FiLock size={16} />
               </span>
               <input
                 type="password"
@@ -112,7 +111,7 @@ export default function AdminLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Masukkan password admin"
-                className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 hover:border-white/20 focus:border-[#C8A84E] focus:ring-1 focus:ring-[#C8A84E] text-white rounded-xl text-sm transition-all outline-none"
+                className="w-full pl-11 pr-4 py-3.5 bg-[#050505] border border-zinc-800 hover:border-zinc-700 focus:border-[#0082FB] focus:ring-1 focus:ring-[#0082FB] text-white rounded-sm text-xs transition-all outline-none"
               />
             </div>
           </div>
@@ -120,11 +119,11 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full bg-[#C8A84E] hover:bg-[#D4BA6A] disabled:bg-[#C8A84E]/50 text-[#0B2314] font-bold py-3.5 rounded-xl transition-all shadow-lg hover:shadow-[#C8A84E]/10 flex justify-center items-center gap-2 text-sm sm:text-base mt-2"
+            className="w-full bg-[#0057B8] hover:bg-[#0082FB] disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-bold py-4 rounded-sm transition-all shadow-lg hover:shadow-[#0057B8]/20 flex justify-center items-center gap-2 text-xs uppercase tracking-widest mt-2 cursor-pointer"
           >
             {submitting ? (
               <>
-                <svg className="animate-spin h-5 w-5 text-[#0B2314]" viewBox="0 0 24 24">
+                <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                 </svg>
@@ -140,7 +139,7 @@ export default function AdminLogin() {
         <div className="text-center mt-6">
           <Link
             to="/"
-            className="text-xs text-cream-100/40 hover:text-[#C8A84E] transition-colors"
+            className="text-[10px] uppercase tracking-widest font-bold text-zinc-500 hover:text-[#0082FB] transition-colors"
           >
             &larr; Kembali ke Landing Page
           </Link>

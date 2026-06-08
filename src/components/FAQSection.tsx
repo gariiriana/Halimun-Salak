@@ -38,17 +38,17 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-12 md:py-24 bg-cream-50">
+    <section id="faq" className="py-16 md:py-28 bg-white border-b border-zinc-100 overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-16">
-          <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
+        <div className="text-center mb-12 md:mb-20">
+          <span className="text-[#0057B8] text-xs tracking-[0.25em] uppercase font-bold">
             Frequently Asked Questions
           </span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl font-bold text-forest-900 mt-3">
+          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl font-extrabold text-black mt-3 uppercase italic tracking-wide">
             Pertanyaan yang Sering Diajukan
           </h2>
-          <p className="text-forest-700/70 mt-4 max-w-lg mx-auto text-xs sm:text-base">
+          <p className="text-zinc-500 mt-4 max-w-lg mx-auto text-xs sm:text-sm leading-relaxed">
             Temukan semua informasi detail tentang aspek legalitas, lokasi, dan mekanisme pembelian kavling The Halimun Salak.
           </p>
         </div>
@@ -60,24 +60,24 @@ export default function FAQSection() {
             return (
               <div
                 key={i}
-                className="bg-white rounded-2xl border border-forest-800/5 hover:border-gold-500/20 transition-all duration-300 overflow-hidden"
+                className="bg-white border border-zinc-200/60 hover:border-[#0082FB]/40 rounded-sm transition-all duration-300 overflow-hidden"
               >
                 <button
                   onClick={() => toggle(i)}
-                  className="w-full text-left px-4 py-4 md:px-6 md:py-5 flex items-center justify-between gap-4 font-semibold text-forest-900 text-sm md:text-lg hover:text-gold-600 transition-colors"
+                  className="w-full text-left px-5 py-4 sm:px-6 sm:py-5 flex items-center justify-between gap-4 font-bold text-black text-xs sm:text-sm tracking-wider uppercase hover:text-[#0057B8] transition-colors"
                 >
                   <span>{faq.q}</span>
-                  <span className="text-gold-500 shrink-0">
-                    {isOpen ? <FiMinus size={18} /> : <FiPlus size={18} />}
+                  <span className="text-[#0057B8] shrink-0">
+                    {isOpen ? <FiMinus size={16} /> : <FiPlus size={16} />}
                   </span>
                 </button>
 
                 <div
                   className={`transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-96 border-t border-forest-800/5" : "max-h-0"
+                    isOpen ? "max-h-96 border-t border-zinc-100" : "max-h-0"
                   } overflow-hidden`}
                 >
-                  <p className="px-4 py-4 md:px-6 md:py-5 text-forest-700/80 text-xs md:text-base leading-relaxed bg-cream-50/30">
+                  <p className="px-5 py-4 sm:px-6 sm:py-5 text-zinc-500 text-xs sm:text-sm leading-relaxed bg-[#f8f9fa]/50">
                     {faq.a}
                   </p>
                 </div>

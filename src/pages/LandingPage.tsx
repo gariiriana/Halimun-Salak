@@ -1,14 +1,17 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ValueSection from "@/components/ValueSection";
+import DesainVillaSection from "@/components/DesainVillaSection";
+import FasilitasKavling from "@/components/FasilitasKavling";
 import SiteplanMap from "@/components/SiteplanMap";
 import PricelistSection from "@/components/PricelistSection";
 import FlowSection from "@/components/FlowSection";
-import GallerySection from "@/components/GallerySection";
+import LegalitasSection from "@/components/LegalitasSection";
 import FAQSection from "@/components/FAQSection";
+import PromoSection from "@/components/PromoSection";
 import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { checkKavlingsExist, seedKavlingsBatch } from "@/lib/firestore";
 import { initialKavlings } from "@/data/initialKavlings";
 
@@ -31,19 +34,22 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#FAF6F0] font-sans antialiased text-[#0B2314]">
+    <div className="flex flex-col min-h-screen bg-white font-sans antialiased text-zinc-900 overflow-x-hidden w-full">
       <Navbar />
       <main className="flex-1">
         <HeroSection />
-        <ValueSection />
+        <LegalitasSection />
         <SiteplanMap />
+        <FasilitasKavling />
+        <DesainVillaSection />
         <PricelistSection />
         <FlowSection />
-        <GallerySection />
         <FAQSection />
+        <PromoSection />
         <LocationSection />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 }

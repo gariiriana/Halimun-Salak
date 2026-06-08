@@ -1,183 +1,129 @@
-
-"use client";
-
-import { FiCheck } from "react-icons/fi";
-
-const pricelist = [
-  {
-    type: "Silver",
-    pricePerM: "Rp 1,95 Jt",
-    priceOld: "Rp 2,3 Jt",
-    cashPromo: "Rp 195.000.000",
-    normal: "Rp 230.000.000",
-    cicilan3: { total: "Rp 233.000.000", bf: "5.000.000", dp: "92.000.000", monthly: "45.000.000" },
-    cicilan6: { total: "Rp 240.000.000", bf: "5.000.000", dp: "94.000.000", monthly: "23.500.000" },
-    color: "from-gray-400 to-gray-500",
-    border: "border-gray-300",
-    badge: "bg-kavling-silver",
-  },
-  {
-    type: "Gold",
-    pricePerM: "Rp 2,15 Jt",
-    priceOld: "Rp 2,5 Jt",
-    cashPromo: "Rp 215.000.000",
-    normal: "Rp 250.000.000",
-
-    cicilan3: { total: "Rp 250.000.000", bf: "5.000.000", dp: "100.000.000", monthly: "48.300.000" },
-    cicilan6: { total: "Rp 260.000.000", bf: "5.000.000", dp: "102.000.000", monthly: "25.500.000" },
-    color: "from-yellow-500 to-amber-600",
-    border: "border-kavling-gold",
-    badge: "bg-kavling-gold",
-    popular: true,
-  },
-  {
-    type: "Diamond",
-    pricePerM: "Rp 2,35 Jt",
-    priceOld: "Rp 2,7 Jt",
-    cashPromo: "Rp 235.000.000",
-    normal: "Rp 270.000.000",
-    cicilan3: { total: "Rp 275.000.000", bf: "5.000.000", dp: "108.000.000", monthly: "54.000.000" },
-    cicilan6: { total: "Rp 290.000.000", bf: "5.000.000", dp: "110.000.000", monthly: "27.500.000" },
-    color: "from-blue-400 to-blue-600",
-    border: "border-kavling-diamond",
-    badge: "bg-kavling-diamond",
-  },
-];
-
-const inclusions = [
-  "Biaya BPHTB, AJB, Notaris, Balik Nama SHM",
-  "Bonus Rumput & Bibit Pohon Hias",
-  "Free Perawatan Lahan Selama 2 Tahun",
-  "Jaringan Listrik Underground",
-];
+import { useState } from "react";
+import { FiSearch, FiX } from "react-icons/fi";
+import { ADMIN_WA } from "@/data/initialKavlings";
 
 export default function PricelistSection() {
+  const [activeTab, setActiveTab] = useState<"cash" | "cicilan">("cash");
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   return (
-    <section id="pricelist" className="py-12 md:py-24 bg-cream-50">
+    <section id="pricelist" className="py-16 md:py-28 bg-[#f8f9fa] border-b border-zinc-200 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
-        <div className="text-center mb-8 md:mb-16">
-          <span className="text-gold-500 text-sm tracking-[0.2em] uppercase font-semibold">
-            Pricelist
+        <div className="text-center mb-10 md:mb-16">
+          <span className="text-[#0057B8] text-xs tracking-[0.25em] uppercase font-bold">
+            Pricelist Kavling
           </span>
-          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-bold text-forest-900 mt-3">
-            Harga Kavling
+          <h2 className="font-[var(--font-heading)] text-3xl sm:text-4xl lg:text-5xl font-extrabold text-black mt-3 uppercase italic tracking-wide">
+            Pricelist The Halimun Salak
           </h2>
-          <p className="text-forest-700/70 mt-4 max-w-xl mx-auto text-sm sm:text-base">
-            Harga promo cash spesial. Booking fee hanya Rp 5.000.000 (berlaku 7
-            hari).
+          <p className="text-zinc-500 mt-4 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+            Informasi harga kavling villa premium dengan pilihan pembayaran cash maupun cicilan sesuai kebutuhan investasi Anda.
           </p>
         </div>
 
-        {/* Mobile Swipe Notice */}
-        <div className="block md:hidden text-center text-xs text-forest-700/55 mb-4 animate-pulse">
-          ← Geser ke kanan/kiri untuk melihat tipe lain →
+        {/* Tab Switcher */}
+        <div className="flex justify-center gap-4 mb-12">
+          <button
+            onClick={() => setActiveTab("cash")}
+            id="tab-btn-cash"
+            className={`px-6 py-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 rounded-sm border ${
+              activeTab === "cash"
+                ? "bg-[#0057B8] text-white border-[#0057B8] shadow-md shadow-[#0057B8]/20"
+                : "bg-white text-zinc-500 border-zinc-200 hover:text-zinc-800 hover:bg-zinc-50"
+            }`}
+          >
+            Skema Cash
+          </button>
+          <button
+            onClick={() => setActiveTab("cicilan")}
+            id="tab-btn-cicilan"
+            className={`px-6 py-3.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 rounded-sm border ${
+              activeTab === "cicilan"
+                ? "bg-[#0057B8] text-white border-[#0057B8] shadow-md shadow-[#0057B8]/20"
+                : "bg-white text-zinc-500 border-zinc-200 hover:text-zinc-800 hover:bg-zinc-50"
+            }`}
+          >
+            Skema Cicilan
+          </button>
         </div>
 
-        {/* Price Cards */}
-        <div className="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-16 pb-4 md:pb-0 snap-x snap-mandatory scroll-smooth">
-          {pricelist.map((p) => (
-            <div
-              key={p.type}
-              className={`relative bg-white rounded-3xl overflow-hidden border-2 ${p.border} hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 min-w-[285px] sm:min-w-[320px] md:min-w-0 snap-align-start flex-1 ${
-                p.popular ? "ring-2 ring-gold-500 ring-offset-4" : ""
-              }`}
-            >
-              {p.popular && (
-                <div className="absolute -top-0 left-1/2 -translate-x-1/2 bg-gold-500 text-forest-950 text-xs font-bold px-4 py-1 rounded-b-lg">
-                  TERLARIS
-                </div>
-              )}
+        {/* Main Flyer Showcase */}
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-4">
+            <h3 className="text-xs font-black uppercase tracking-widest text-[#0057B8]">
+              {activeTab === "cash" ? "Brosur Skema Cash" : "Brosur Skema Cicilan"}
+            </h3>
+            <p className="text-[10px] text-zinc-400 mt-1 uppercase tracking-wider">
+              Klik gambar brosur di bawah untuk memperbesar detail tabel harga resmi
+            </p>
+          </div>
 
-              {/* Card Header */}
-              <div
-                className={`bg-gradient-to-br ${p.color} px-6 py-8 text-center text-white`}
-              >
-                <span className="text-white/80 text-sm font-semibold tracking-wider uppercase">
-                  {p.type}
-                </span>
-                <div className="mt-3">
-                  <span className="text-white/50 text-sm line-through">
-                    {p.priceOld}
-                  </span>
-                </div>
-                <p className="text-4xl font-bold font-[var(--font-heading)] mt-1">
-                  {p.pricePerM}
-                </p>
-                <p className="text-white/80 text-sm mt-1">per meter²</p>
-              </div>
-
-              {/* Card Body */}
-              <div className="px-6 py-6">
-                <div className="space-y-3">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Harga Cash Promo</span>
-                    <span className="font-bold text-forest-900">
-                      {p.cashPromo}
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Harga Normal</span>
-                    <span className="text-gray-400 line-through">
-                      {p.normal}
-                    </span>
-                  </div>
-                  <hr className="border-gray-100" />
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Cicilan 3 Bulan</span>
-                    <span className="font-semibold text-forest-900">
-                      {p.cicilan3.monthly}/bln
-                    </span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Cicilan 6 Bulan</span>
-                    <span className="font-semibold text-forest-900">
-                      {p.cicilan6.monthly}/bln
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-6 bg-forest-950 rounded-xl p-4 text-center">
-                  <p className="text-gold-400 text-xs uppercase tracking-wider font-semibold">
-                    Booking Fee
-                  </p>
-                  <p className="text-white text-xl font-bold mt-1">
-                    Rp 5.000.000
-                  </p>
-                  <p className="text-cream-100/50 text-xs mt-1">
-                    Berlaku 7 hari kerja
-                  </p>
-                </div>
-
-                <a
-                  href="#siteplan"
-                  className="block mt-6 text-center bg-gold-500 hover:bg-gold-400 text-forest-950 py-3 rounded-xl font-bold transition-all"
-                >
-                  Pilih Kavling {p.type}
-                </a>
+          <div
+            onClick={() => setIsLightboxOpen(true)}
+            id="flyer-zoom-trigger"
+            className="group relative cursor-zoom-in aspect-[1/1] w-full bg-white border border-zinc-200 rounded-sm overflow-hidden shadow-lg hover:shadow-2xl hover:border-[#0057B8]/50 transition-all duration-350"
+          >
+            <img
+              src={activeTab === "cash" ? "/pricelist-cash.webp" : "/pricelist-cicilan.webp"}
+              alt={`Official Pricelist ${activeTab}`}
+              className="w-full h-full object-contain p-2 md:p-4 group-hover:scale-102 transition-transform duration-500"
+            />
+            
+            {/* Zoom Overlay */}
+            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="bg-black/80 text-white text-[10px] font-black tracking-widest uppercase py-3 px-6 rounded-sm flex items-center gap-2 border border-zinc-800 shadow-xl">
+                <FiSearch size={14} className="text-[#0082FB]" />
+                Perbesar Tabel Harga
               </div>
             </div>
-          ))}
-        </div>
+          </div>
 
-        {/* Inclusions */}
-        <div className="bg-white rounded-2xl p-8 border border-forest-800/5">
-          <h3 className="font-[var(--font-heading)] text-xl font-bold text-forest-900 mb-4 text-center">
-            Sudah Termasuk Dalam Harga:
-          </h3>
-          <div className="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
-            {inclusions.map((item) => (
-              <div key={item} className="flex items-start gap-2">
-                <FiCheck
-                  className="text-green-500 mt-0.5 shrink-0"
-                  size={16}
-                />
-                <span className="text-forest-700/80 text-sm">{item}</span>
-              </div>
-            ))}
+          {/* Download & Custom CTA */}
+          <div className="mt-8 text-center space-y-3">
+            <a
+              href={`https://wa.me/${ADMIN_WA}?text=Hallo%20saya%20tertarik%20dengan%20kavling%20The%20Halimun%20Salak.%20Mohon%20kirimkan%20PDF%20Pricelist%20Resmi%20untuk%20${
+                activeTab === "cash" ? "Skema%20Cash" : "Skema%20Cicilan"
+              }.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="pricelist-download-cta"
+              className="inline-flex items-center gap-3 bg-[#0057B8] hover:bg-[#0082FB] text-white px-8 py-4.5 text-xs font-black uppercase tracking-widest transition-all shadow-md hover:shadow-lg rounded-sm cursor-pointer"
+            >
+              Minta Pricelist PDF via WhatsApp
+            </a>
+            <p className="text-zinc-500 text-[10px] uppercase tracking-wider">
+              Bisa survey lokasi • Konsultasi gratis • Respon cepat
+            </p>
           </div>
         </div>
+
       </div>
+
+      {/* Lightbox Modal for Zooming Flyer */}
+      {isLightboxOpen && (
+        <div
+          onClick={() => setIsLightboxOpen(false)}
+          id="flyer-lightbox-backdrop"
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-8 cursor-zoom-out animate-fade-in"
+        >
+          <div className="relative max-w-4xl max-h-[85vh] w-full h-full flex items-center justify-center">
+            <img
+              src={activeTab === "cash" ? "/pricelist-cash.webp" : "/pricelist-cicilan.webp"}
+              alt={`Zoomed Pricelist ${activeTab}`}
+              className="max-w-full max-h-full object-contain p-2 bg-white rounded-sm shadow-2xl animate-scale-in"
+            />
+            <button
+              onClick={() => setIsLightboxOpen(false)}
+              id="flyer-lightbox-close"
+              className="absolute -top-12 right-0 text-white hover:text-[#0082FB] text-xs font-bold tracking-widest uppercase cursor-pointer py-2 px-4 flex items-center gap-1.5"
+            >
+              TUTUP <FiX size={16} />
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

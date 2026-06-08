@@ -2,25 +2,25 @@
 
 /* ──────── Custom Theme Tokens (Tailwind v4) ──────── */
 @theme inline {
-  --color-forest-950: #0B2314;
-  --color-forest-900: #12351F;
-  --color-forest-800: #1B4D2E;
-  --color-forest-700: #22603A;
-  --color-forest-600: #2D7A4A;
-  --color-forest-500: #3A9660;
-  --color-gold-600: #AA873C;
-  --color-gold-500: #C8A84E;
-  --color-gold-400: #D4BA6A;
-  --color-gold-300: #E0CC86;
-  --color-cream-100: #F5EDE0;
-  --color-cream-50: #FAF6F0;
-  --color-barn: #8C1D1D;
-  --color-kavling-diamond: #2D9CDB;
-  --color-kavling-gold: #F2C94C;
-  --color-kavling-silver: #9E9E9E;
-  --color-status-available: #219653;
-  --color-status-booked: #F2994A;
-  --color-status-sold: #EB5757;
+  --color-forest-950: #050505;
+  --color-forest-900: #121212;
+  --color-forest-800: #1c1c1e;
+  --color-forest-700: #2c2c2e;
+  --color-forest-600: #3a3a3c;
+  --color-forest-500: #48484a;
+  --color-gold-600: #004b93;
+  --color-gold-500: #0057B8;
+  --color-gold-400: #0082FB;
+  --color-gold-300: #33A2FF;
+  --color-cream-100: #e4e4e7;
+  --color-cream-50: #ffffff;
+  --color-barn: #050505;
+  --color-kavling-diamond: #0082FB;
+  --color-kavling-gold: #e5e5e5;
+  --color-kavling-silver: #4a4a4a;
+  --color-status-available: #00E676;
+  --color-status-booked: #FFB300;
+  --color-status-sold: #E53935;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Outfit", ui-sans-serif, system-ui, sans-serif;
@@ -29,14 +29,17 @@
 /* ──────── Base Styles ──────── */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--color-cream-50);
-  color: #2D2D2D;
+  color: #1a1a1a;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ──────── Custom Scrollbar ──────── */
@@ -44,14 +47,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-cream-100);
+  background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-forest-700);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-forest-800);
+  background: var(--color-gold-500);
 }
 
 /* ──────── Utility Classes ──────── */
@@ -104,4 +107,42 @@ body {
 .kavling-plot:hover {
   filter: brightness(1.2);
   stroke-width: 3;
+}
+
+/* Custom scrollbar utility for dark containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #0082FB;
+}
+
+/* Hide scrollbar utility for mobile carousels */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+@supports (scrollbar-width: none) {
+  .scrollbar-none {
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+/* Float Animation for CS WhatsApp Widget */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
