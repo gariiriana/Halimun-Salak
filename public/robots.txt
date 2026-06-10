@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /gallery/
+Disallow: /admin/
+Disallow: /admin
+
+Sitemap: https://kavling-halimunsalak.com/sitemap.xml

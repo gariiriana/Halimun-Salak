@@ -204,12 +204,52 @@ export default function GalleryDetail() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const origTitle = "The Halimun Salak — Kavling Villa Eksklusif";
+    const origDesc = "Miliki kavling villa eksklusif ala Eropa Modern di kaki Gunung Salak. Ketinggian 560 MDPL, pemandangan pegunungan yang menakjubkan, dan SHM.";
+    const origImage = "https://kavling-halimunsalak.com/logo-halimun-salak-v4.png";
+
     if (item) {
       document.title = `${item.title} - The Halimun Salak`;
       setSelectedImage(item.mainImage);
+
+      const updateMeta = (selector: string, attrName: string, attrVal: string, contentVal: string) => {
+        let meta = document.querySelector(selector);
+        if (!meta) {
+          meta = document.createElement("meta");
+          meta.setAttribute(attrName, attrVal);
+          document.head.appendChild(meta);
+        }
+        meta.setAttribute("content", contentVal);
+      };
+
+      updateMeta('meta[name="description"]', "name", "description", item.desc);
+      updateMeta('meta[property="og:title"]', "property", "og:title", `${item.title} - The Halimun Salak`);
+      updateMeta('meta[property="og:description"]', "property", "og:description", item.desc);
+      
+      const absoluteImage = item.mainImage.startsWith("http") 
+        ? item.mainImage 
+        : `https://kavling-halimunsalak.com${item.mainImage}`;
+      updateMeta('meta[property="og:image"]', "property", "og:image", absoluteImage);
     } else {
       document.title = "Not Found - The Halimun Salak";
     }
+
+    return () => {
+      document.title = origTitle;
+      
+      const restoreMeta = (selector: string, contentVal: string) => {
+        const meta = document.querySelector(selector);
+        if (meta) {
+          meta.setAttribute("content", contentVal);
+        }
+      };
+
+      restoreMeta('meta[name="description"]', origDesc);
+      restoreMeta('meta[property="og:title"]', origTitle);
+      restoreMeta('meta[property="og:description"]', origDesc);
+      restoreMeta('meta[property="og:image"]', origImage);
+    };
   }, [id, item]);
 
   if (!item) {

@@ -16,8 +16,8 @@ export default function HeroSection() {
   const [text2, setText2] = useState("");
   const [bgIndex, setBgIndex] = useState(0);
   
-  const fullText1 = "Kavling Villa Eksklusif";
-  const fullText2 = "ala Eropa Modern";
+  const fullText1 = "Jual Tanah Kavling Villa";
+  const fullText2 = "Eksklusif Eropa Modern";
 
   useEffect(() => {
     let activeInterval: NodeJS.Timeout;
@@ -98,9 +98,9 @@ export default function HeroSection() {
         <div className="relative font-[var(--font-heading)] text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 sm:mb-6 uppercase tracking-wider leading-[1.2] sm:leading-[1.15]">
           {/* Static invisible text that reserves the height */}
           <h1 className="invisible select-none pointer-events-none">
-            Kavling Villa Eksklusif
+            Jual Tanah Kavling Villa
             <br className="hidden sm:inline" />{" "}
-            <span className="text-white">ala Eropa Modern</span>
+            <span className="text-white">Eksklusif Eropa Modern</span>
           </h1>
           {/* Typed text layered absolutely on top */}
           <div className="absolute inset-0 text-white">
