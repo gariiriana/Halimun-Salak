@@ -9,6 +9,7 @@ const navLinks = [
   { label: "Konsep", href: "#konsep" },
   { label: "Fasilitas", href: "#fasilitas" },
   { label: "Desain", href: "#desain" },
+  { label: "Portofolio", href: "#portfolio" },
   { label: "Siteplan", href: "#siteplan" },
   { label: "Pricelist", href: "#pricelist" },
   { label: "FAQ", href: "#faq" },

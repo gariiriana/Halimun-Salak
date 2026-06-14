@@ -95,18 +95,18 @@ export default function HeroSection() {
       <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 text-center py-16 sm:py-28 md:py-36">
 
         {/* Main Heading (BYD style clean upright uppercase bold with Typing Animation and No Layout Shift) */}
-        <div className="relative font-[var(--font-heading)] text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 sm:mb-6 uppercase tracking-wider leading-[1.2] sm:leading-[1.15]">
+        <div className="relative font-[var(--font-heading)] text-lg sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 uppercase tracking-wider leading-[1.2] sm:leading-[1.15]">
           {/* Static invisible text that reserves the height */}
           <h1 className="invisible select-none pointer-events-none">
-            Jual Tanah Kavling Villa
-            <br className="hidden sm:inline" />{" "}
-            <span className="text-white">Eksklusif Eropa Modern</span>
+            <span className="whitespace-nowrap inline-block">Jual Tanah Kavling Villa</span>
+            <br />{" "}
+            <span className="text-white whitespace-nowrap inline-block">Eksklusif Eropa Modern</span>
           </h1>
           {/* Typed text layered absolutely on top */}
           <div className="absolute inset-0 text-white">
-            {text1}
-            {text1 === fullText1 && <br className="hidden sm:inline" />}{" "}
-            <span className="text-white">{text2}</span>
+            <span className="whitespace-nowrap inline-block">{text1}</span>
+            {text1 === fullText1 && <br />}{" "}
+            <span className="text-white whitespace-nowrap inline-block">{text2}</span>
             <span className="inline-block w-[3px] h-[0.8em] bg-[#0082FB] ml-1 animate-pulse align-middle"></span>
           </div>
         </div>

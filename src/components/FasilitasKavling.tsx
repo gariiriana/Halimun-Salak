@@ -1,4 +1,4 @@
-import { FaUtensils, FaShieldAlt, FaWind, FaMosque, FaCampground } from "react-icons/fa";
+import { FaUtensils, FaShieldAlt, FaWind, FaMosque } from "react-icons/fa";
 
 const facilities = [
   {
@@ -29,13 +29,6 @@ const facilities = [
     icon: FaMosque,
     tag: "AREA IBADAH",
   },
-  {
-    title: "Glamping & Campsite Area",
-    desc: "Kawasan berkemah eksklusif berlatar pemandangan alam perbukitan hijau. Sempurna untuk menikmati suasana api unggun malam hari dan keindahan taburan bintang langsung dari alam bebas.",
-    img: "/facility-5.png",
-    icon: FaCampground,
-    tag: "CAMPING GROUND",
-  },
 ];
 
 export default function FasilitasKavling() {
@@ -60,10 +53,9 @@ export default function FasilitasKavling() {
           </p>
         </div>
 
-        {/* 5 Cards Balanced Grid Layout */}
-        {/* Row 1: 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-8">
-          {facilities.slice(0, 3).map((f, idx) => {
+        {/* Balanced 2x2 Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+          {facilities.map((f, idx) => {
             const Icon = f.icon;
             return (
               <div
@@ -96,48 +88,6 @@ export default function FasilitasKavling() {
                   </div>
                 </div>
                 
-                {/* Visual Accent footer bar */}
-                <div className="h-1 bg-gradient-to-r from-transparent via-[#aa873c]/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Row 2: 2 Centered Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
-          {facilities.slice(3, 5).map((f, idx) => {
-            const Icon = f.icon;
-            return (
-              <div
-                key={idx}
-                className="group relative bg-[#121212] border border-zinc-800 rounded-sm overflow-hidden hover:border-[#aa873c]/40 transition-all duration-500 shadow-xl flex flex-col justify-between"
-              >
-                <div>
-                  {/* Image wrapper */}
-                  <div className="relative aspect-[1024/575] w-full overflow-hidden bg-[#121212] border-b border-zinc-900">
-                    <img
-                      src={f.img}
-                      alt={f.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                  </div>
-
-                  {/* Body Content */}
-                  <div className="p-6 space-y-3">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-[#aa873c]/10 text-[#c8a84e] rounded-sm shrink-0 border border-[#aa873c]/20">
-                        <Icon size={14} />
-                      </div>
-                      <h3 className="font-[var(--font-heading)] text-base font-bold text-white uppercase tracking-wide">
-                        {f.title}
-                      </h3>
-                    </div>
-                    <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
-                      {f.desc}
-                    </p>
-                  </div>
-                </div>
-
                 {/* Visual Accent footer bar */}
                 <div className="h-1 bg-gradient-to-r from-transparent via-[#aa873c]/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
               </div>

@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import DesainVillaSection from "@/components/DesainVillaSection";
 import FasilitasKavling from "@/components/FasilitasKavling";
+import PortfolioProjects from "@/components/PortfolioProjects";
 import SiteplanMap from "@/components/SiteplanMap";
 import PricelistSection from "@/components/PricelistSection";
 import FlowSection from "@/components/FlowSection";
@@ -11,7 +12,6 @@ import FAQSection from "@/components/FAQSection";
 import PromoSection from "@/components/PromoSection";
 import LocationSection from "@/components/LocationSection";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { checkKavlingsExist, seedKavlingsBatch } from "@/lib/firestore";
 import { initialKavlings } from "@/data/initialKavlings";
 
@@ -42,6 +42,7 @@ export default function LandingPage() {
         <SiteplanMap />
         <FasilitasKavling />
         <DesainVillaSection />
+        <PortfolioProjects />
         <PricelistSection />
         <FlowSection />
         <FAQSection />
@@ -49,7 +50,6 @@ export default function LandingPage() {
         <LocationSection />
       </main>
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }

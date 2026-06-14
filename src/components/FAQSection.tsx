@@ -6,7 +6,7 @@ import { FiPlus, FiMinus } from "react-icons/fi";
 const faqs = [
   {
     q: "Apa itu The Halimun Salak?",
-    a: "The Halimun Salak adalah proyek ke-11 dari Nuansa Alam (PT Alam Barakah Hasanah), yaitu kawasan kavling villa eksklusif bertema pedesaan modern Eropa. Berlokasi di ketinggian 560 MDPL di kaki Gunung Salak dengan panorama pegunungan yang asri, udara bersih, dan kabut alami.",
+    a: "The Halimun Salak adalah proyek ke-11 dari Nuansa Alam, yaitu kawasan kavling villa eksklusif bertema pedesaan modern Eropa. Berlokasi di ketinggian 560 MDPL di kaki Gunung Salak dengan panorama pegunungan yang asri, udara bersih, dan kabut alami.",
   },
   {
     q: "Bagaimana dengan legalitas lahannya?",

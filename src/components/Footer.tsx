@@ -23,7 +23,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-xs sm:text-sm leading-relaxed mb-6 text-zinc-400">
-              The Halimun Salak adalah kawasan kavling villa eksklusif bernuansa eco-luxury European modern living yang dikembangkan oleh PT Alam Barakah Hasanah (Nuansa Alam). Berkomitmen menghadirkan investasi tanah terbaik dengan kenyamanan hunian terpadu.
+              The Halimun Salak adalah kawasan kavling villa eksklusif bernuansa eco-luxury European modern living yang dikembangkan oleh Nuansa Alam. Berkomitmen menghadirkan investasi tanah terbaik dengan kenyamanan hunian terpadu.
             </p>
             
             {/* Socials */}
@@ -114,7 +114,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-wider font-semibold text-zinc-600">
           <p>
-            &copy; {currentYear} PT Alam Barakah Hasanah. All rights reserved.
+            &copy; {currentYear} The Halimun Salak. All rights reserved.
           </p>
           <p>
             Designed & Developed under Nuansa Alam Proyek Ke-11
