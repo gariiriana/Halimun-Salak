@@ -66,7 +66,7 @@ export default function HeroSection() {
   return (
     <section
       id="beranda"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-screen flex items-start sm:items-center justify-center overflow-hidden bg-black pt-20 sm:pt-0"
     >
       {/* Background Image Slideshow with Crossfade */}
       <div className="absolute inset-0 z-0">
@@ -92,27 +92,27 @@ export default function HeroSection() {
       {/* Top thin electric accent line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#0057B8]/30 to-transparent z-10" />
 
-      <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 text-center py-16 sm:py-28 md:py-36">
+      <div className="relative z-20 max-w-6xl mx-auto px-2 sm:px-6 text-center pt-16 pb-20 sm:py-28 md:py-36">
 
         {/* Main Heading (BYD style clean upright uppercase bold with Typing Animation and No Layout Shift) */}
-        <div className="relative font-[var(--font-heading)] text-lg sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 uppercase tracking-wider leading-[1.2] sm:leading-[1.15]">
+        <div className="relative font-[var(--font-heading)] text-[22px] sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-6 sm:mb-8 uppercase tracking-wider leading-[1.45] sm:leading-[1.2]">
           {/* Static invisible text that reserves the height */}
           <h1 className="invisible select-none pointer-events-none">
-            <span className="whitespace-nowrap inline-block">Jual Tanah Kavling Villa</span>
+            <span className="inline sm:whitespace-nowrap sm:inline-block">Jual Tanah Kavling Villa</span>
             <br />{" "}
-            <span className="text-white whitespace-nowrap inline-block">Eksklusif Eropa Modern</span>
+            <span className="text-white inline sm:whitespace-nowrap sm:inline-block">Eksklusif Eropa Modern</span>
           </h1>
           {/* Typed text layered absolutely on top */}
           <div className="absolute inset-0 text-white">
-            <span className="whitespace-nowrap inline-block">{text1}</span>
+            <span className="inline sm:whitespace-nowrap sm:inline-block">{text1}</span>
             {text1 === fullText1 && <br />}{" "}
-            <span className="text-white whitespace-nowrap inline-block">{text2}</span>
+            <span className="text-white inline sm:whitespace-nowrap sm:inline-block">{text2}</span>
             <span className="inline-block w-[3px] h-[0.8em] bg-[#0082FB] ml-1 animate-pulse align-middle"></span>
           </div>
         </div>
 
         {/* Subheading */}
-        <p className="text-zinc-300 text-xs sm:text-base max-w-2xl mx-auto mb-6 sm:mb-12 leading-relaxed tracking-wide font-medium drop-shadow-md px-2 sm:px-0">
+        <p className="text-zinc-300 text-xs sm:text-base max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed tracking-wide font-medium drop-shadow-md px-2 sm:px-0">
           Hunian villa premium di kaki Gunung Salak, ketinggian{" "}
           <strong className="text-white">560 MDPL</strong> dengan panorama
           langsung Gunung Salak & Gunung Pangrango. Konsep{" "}
@@ -120,8 +120,8 @@ export default function HeroSection() {
         </p>
 
         {/* Video Player */}
-        <div className="max-w-4xl mx-auto mt-4 sm:mt-8 relative z-20">
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-black group hover:border-[#0082FB]/40 transition-all duration-500">
+        <div className="max-w-4xl mx-auto mt-6 sm:mt-10 relative z-20 px-8 sm:px-0">
+          <div className="relative aspect-square sm:aspect-video rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl bg-black group hover:border-[#0082FB]/40 transition-all duration-500">
             {/* Ambient glow on hover */}
             <div className="absolute -inset-1 bg-gradient-to-r from-[#0057B8]/20 to-[#0082FB]/20 rounded-2xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none" />
             <iframe
